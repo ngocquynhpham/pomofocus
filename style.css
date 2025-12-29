@@ -1,0 +1,304 @@
+/* PomoFocus Design System
+  Based on SRS v1.1 - Section 7
+*/
+
+:root {
+  /* A. Colors Token */
+  --color-bg-primary: #121212;      /* Deep Void */
+  --color-bg-surface: #1E293B;      /* Slate Charcoal */
+  --color-text-primary: #FFFFFF;    /* Pure White */
+  --color-text-secondary: #94A3B8;  /* Cool Grey */
+  --color-brand: #3B82F6;           /* Reliable Blue */
+  --color-focus: #FF6B6B;           /* Focus Coral */
+  --color-success: #2DD4BF;         /* Calm Teal */
+  --color-border: #334155;          /* Subtle Line */
+  --color-danger: #ef4444;          /* Danger Red */
+
+  /* B. Typography Token */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-size-display: 48px;
+  --font-size-h1: 18px;
+  --font-size-body: 14px;
+  --font-size-caption: 12px;
+
+  /* C. Spacing Token */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+
+  /* D. Effects Token */
+  --shadow-soft: 0 4px 12px rgba(0, 0, 0, 0.25);
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-full: 999px;
+  --transition: all 0.2s ease-in-out;
+}
+
+/* Global Reset */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  width: 360px; /* Kích thước chuẩn cho Popup */
+  height: 520px;
+  background-color: var(--color-bg-primary);
+  color: var(--color-text-primary);
+  font-family: var(--font-family);
+  font-size: var(--font-size-body);
+  overflow-x: hidden;
+}
+
+/* --- Layout --- */
+.app-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Navigation Tabs */
+.nav-tabs {
+  display: flex;
+  justify-content: space-around;
+  background-color: var(--color-bg-surface);
+  padding: var(--space-sm) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.nav-item {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-caption);
+  font-weight: 600;
+  cursor: pointer;
+  padding: var(--space-xs) var(--space-md);
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.nav-item:hover {
+  color: var(--color-text-primary);
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.nav-item.active {
+  color: var(--color-bg-primary);
+  background-color: var(--color-brand);
+}
+
+/* Main Content Area */
+.main-content {
+  flex: 1;
+  padding: var(--space-md);
+  overflow-y: auto;
+  position: relative;
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn 0.3s ease;
+}
+
+.tab-pane.active {
+  display: flex;
+  flex-direction: column;
+  padding: 12px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(5px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Components --- */
+
+/* 1. Primary Button */
+.btn {
+  border: none;
+  border-radius: var(--radius-md);
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: var(--transition);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.btn-primary {
+  background-color: var(--color-brand);
+  color: var(--color-text-primary);
+}
+
+.btn-primary:hover {
+  background-color: #2563EB; /* Darker blue */
+  transform: scale(0.98);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+}
+
+.btn-outline:hover {
+  border-color: var(--color-text-primary);
+  color: var(--color-text-primary);
+}
+
+.btn-icon {
+  width: 40px;
+  padding: 0;
+  border-radius: 50%;
+}
+
+/* 2. Input Field */
+.input-field {
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  padding: 12px;
+  color: var(--color-text-primary);
+  font-family: inherit;
+  transition: var(--transition);
+  margin-bottom: var(--space-md);
+}
+
+.input-field:focus {
+  outline: none;
+  border-color: var(--color-brand);
+  background-color: rgba(59, 130, 246, 0.1);
+}
+
+.input-field::placeholder {
+  color: var(--color-text-secondary);
+}
+
+/* 3. Timer Circle */
+.timer-wrapper {
+  position: relative;
+  width: 220px;
+  height: 220px;
+  margin: var(--space-lg) auto;
+}
+
+.timer-svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.timer-circle-bg {
+  fill: none;
+  stroke: var(--color-border);
+  stroke-width: 6;
+}
+
+.timer-circle-progress {
+  fill: none;
+  stroke: var(--color-focus); /* Mặc định là màu Focus */
+  stroke-width: 6;
+  stroke-linecap: round;
+  stroke-dasharray: 660; /* Chu vi ~ 2*PI*105 */
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s linear, stroke 0.3s ease;
+}
+
+.timer-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.time-display {
+  font-size: var(--font-size-display);
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.session-status {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-top: var(--space-xs);
+}
+
+/* 4. Progress Dots */
+.progress-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-md);
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: var(--color-border);
+  transition: var(--transition);
+}
+
+.dot.active { background-color: var(--color-focus); }
+.dot.completed { background-color: var(--color-success); }
+
+/* 5. Task List Item */
+.task-item {
+  background-color: var(--color-bg-surface);
+  padding: var(--space-md);
+  border-radius: var(--radius-md);
+  margin-bottom: var(--space-sm);
+  box-shadow: var(--shadow-soft);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-info h4 {
+  font-size: var(--font-size-body);
+  margin-bottom: 4px;
+}
+
+.task-meta {
+  font-size: var(--font-size-caption);
+  color: var(--color-text-secondary);
+}
+
+.task-badge {
+  background-color: rgba(45, 212, 191, 0.1);
+  color: var(--color-success);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* Settings Form */
+.form-group {
+  margin-bottom: var(--space-md);
+}
+
+.form-label {
+  display: block;
+  font-size: var(--font-size-body);
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-xs);
+}
+
+/* Utilities */
+.hidden { display: none !important; }
+.text-center { text-align: center; }
+.mb-2 { margin-bottom: var(--space-md); }
+.mt-auto { margin-top: auto; }
+.flex-row { display: flex; gap: var(--space-md); }

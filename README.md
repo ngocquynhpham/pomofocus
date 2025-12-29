@@ -24,8 +24,6 @@
 Since this is an open-source project, you can install it directly via Chrome Developer Mode:
 
 1. **Clone** or **Download** this repository to your machine.  
-   git clone \[https://github.com/ngocquynhpham/pomofocus.git\](https://github.com/ngocquynhpham/pomofocus.git)
-
 2. Open Chrome and navigate to: chrome://extensions/  
 3. Enable **Developer mode** (Toggle in the top-right corner).  
 4. Click **Load unpacked**.  

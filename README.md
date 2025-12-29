@@ -6,7 +6,6 @@
 ## **✨ Key Features**
 
 * **⏱️ Pomodoro Timer:** Standard cycle: 25m Focus \- 5m Short Break \- 15m Long Break.  
-* **🎨 Dynamic Theme:** Interface automatically adapts colors based on status (Red: Focus / Teal: Short Break / Blue: Long Break).  
 * **📝 Task Management:** Manage your to-do list and track detailed session history.  
 * **🔊 Sound & Notifications:** Audio alerts and system notifications when the timer ends.  
 * **🔒 Offline & Privacy-First:** All data is stored locally (chrome.storage.local); no user tracking.
